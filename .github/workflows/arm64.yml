@@ -21,7 +21,7 @@ jobs:
         images="${{ github.event.inputs.docker_images }}"
         IFS=',' read -r -a image_array <<< "$images"
         for image in "${image_array[@]}"; do
-          docker pull "${image}" --platform "linux/arm64"
+          docker pull "${image}" --platform "linux/amd64/v4"
           docker save "${image}" -o "${image//\//_}-arm64.tar"
         done
 
